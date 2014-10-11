@@ -1,0 +1,27 @@
+{
+    "name": "flamecore/synchronizer",
+    "description": "Synchronize filesystems and database schemas",
+    "homepage": "http://www.flamecore.org",
+    "keywords": ["synchronization"],
+    "license": "ISC",
+    "authors": [
+        {
+            "name": "Christian Neff",
+            "email": "christian.neff@gmail.com",
+            "homepage": "http://www.secondtruth.de",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/FlameCore/Synchronizer/issues",
+        "source": "https://github.com/FlameCore/Synchronizer"
+    },
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "FlameCore\\Synchronizer\\": "lib/"
+        }
+    }
+}
