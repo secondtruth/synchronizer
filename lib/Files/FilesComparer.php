@@ -43,9 +43,9 @@ class FilesComparer
 
     protected $obsoleteFiles = array();
 
-    public function __construct(FilesSourceInterface $source, FilesTargetInterface $target)
+    public function __construct(FilesSourceInterface $source, FilesTargetInterface $target, $exclude = false)
     {
-        $sourceFiles = $source->getFilesList();
+        $sourceFiles = $source->getFilesList($exclude);
         $targetFiles = $target->getFilesList();
 
         foreach ($sourceFiles as $dir => $files) {

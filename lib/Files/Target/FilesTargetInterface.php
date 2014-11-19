@@ -47,7 +47,7 @@ interface FilesTargetInterface extends SynchronizerTargetInterface
 
     public function getFilesPath();
 
-    public function getFilesList();
+    public function getFilesList($exclude = false);
 
     public function getRealPathName($file);
 

@@ -34,6 +34,8 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
 
     protected $target;
 
+    protected $excludes = array();
+
     public function __construct(SynchronizerSourceInterface $source, SynchronizerTargetInterface $target)
     {
         if (!$this->supportsSource($source))
@@ -44,6 +46,21 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
 
         $this->source = $source;
         $this->target = $target;
+    }
+
+    public function getExcludes()
+    {
+        return $this->excludes;
+    }
+
+    public function setExcludes(array $excludes)
+    {
+        $this->excludes = $excludes;
+    }
+
+    public function exclude($exclude)
+    {
+        $this->excludes[] = $exclude;
     }
 
     abstract public function synchronize();

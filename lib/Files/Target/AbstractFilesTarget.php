@@ -54,7 +54,7 @@ abstract class AbstractFilesTarget implements FilesTargetInterface
         return $this->path;
     }
 
-    abstract public function getFilesList();
+    abstract public function getFilesList($exclude = false);
 
     abstract public function getRealPathName($file);
 

@@ -40,11 +40,29 @@ class LocalFilesSource extends AbstractFilesSource
         file_get_contents($this->getRealPathName($file));
     }
 
-    public function getFilesList()
+    public function getFilesList($exclude = false)
     {
         $fileslist = array();
 
-        $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($this->path, \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::UNIX_PATHS));
+        $iterator = new \RecursiveDirectoryIterator($this->path, \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::UNIX_PATHS);
+
+        if ((is_string($exclude) || is_array($exclude)) && !empty($exclude)) {
+            $iterator = new \RecursiveCallbackFilterIterator($iterator, function ($current, $key, $iterator) use ($exclude) {
+                if ($current->isDir())
+                    return true;
+
+                $subpath = substr($current->getPathName(), strlen($this->path) + 1);
+
+                foreach ((array) $exclude as $pattern) {
+                    if ($pattern[0] == '!' ? !fnmatch(substr($pattern, 1), $subpath) : fnmatch($pattern, $subpath))
+                        return false;
+                }
+
+                return true;
+            });
+        }
+
+        $iterator = new \RecursiveIteratorIterator($iterator);
         foreach ($iterator as $file) {
             $dirname = $file->getPath();
             $filename = $file->getBasename();

@@ -39,7 +39,7 @@ class FilesSynchronizer extends AbstractSynchronizer
         $source = $this->source;
         $target = $this->target;
 
-        $comparer = new FilesComparer($source, $target);
+        $comparer = new FilesComparer($source, $target, $this->excludes);
 
         foreach ($comparer->getOutdatedFiles() as $file)
             $target->put($file, $source->get($file), $source->getFileMode($file));
