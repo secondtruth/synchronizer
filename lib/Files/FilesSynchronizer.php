@@ -34,7 +34,7 @@ use FlameCore\Synchronizer\SynchronizerTargetInterface;
  */
 class FilesSynchronizer extends AbstractSynchronizer
 {
-    public function synchronize()
+    public function synchronize($preserve = true)
     {
         $source = $this->source;
         $target = $this->target;
@@ -50,11 +50,13 @@ class FilesSynchronizer extends AbstractSynchronizer
         foreach ($comparer->getMissingFiles() as $file)
             $target->put($file, $source->get($file), $source->getFileMode($file));
 
-        foreach ($comparer->getObsoleteFiles() as $file)
-            $target->remove($file);
+        if (!$preserve) {
+            foreach ($comparer->getObsoleteFiles() as $file)
+                $target->remove($file);
 
-        foreach ($comparer->getObsoleteDirs() as $file)
-            $target->removeDir($file);
+            foreach ($comparer->getObsoleteDirs() as $file)
+                $target->removeDir($file);
+        }
     }
 
     public function supportsSource(SynchronizerSourceInterface $source)

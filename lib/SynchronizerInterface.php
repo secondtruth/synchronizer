@@ -32,7 +32,7 @@ interface SynchronizerInterface
 {
     public function __construct(SynchronizerSourceInterface $source, SynchronizerTargetInterface $target);
 
-    public function synchronize();
+    public function synchronize($preserve = true);
 
     public function supportsSource(SynchronizerSourceInterface $source);
 
