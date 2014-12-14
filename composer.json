@@ -17,7 +17,8 @@
         "source": "https://github.com/FlameCore/Synchronizer"
     },
     "require": {
-        "php": ">=5.4"
+        "php": ">=5.4",
+        "flamecore/observer": "~1.2"
     },
     "autoload": {
         "psr-4": {

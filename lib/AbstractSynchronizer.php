@@ -23,6 +23,8 @@
 
 namespace FlameCore\Synchronizer;
 
+use FlameCore\Observer\ObserverInterface;
+
 /**
  * The AbstractSynchronizer class
  *
@@ -33,6 +35,8 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
     protected $source;
 
     protected $target;
+
+    protected $observer;
 
     protected $excludes = array();
 
@@ -61,5 +65,10 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
     public function exclude($exclude)
     {
         $this->excludes[] = $exclude;
+    }
+
+    public function observe(ObserverInterface $observer)
+    {
+        $this->observer = $observer;
     }
 }
