@@ -36,26 +36,13 @@ class FilesSynchronizer extends AbstractSynchronizer
 {
     public function synchronize($preserve = true)
     {
-        $source = $this->source;
-        $target = $this->target;
+        $diff = new FilesComparer($this->source, $this->target, $this->excludes);
 
-        $comparer = new FilesComparer($source, $target, $this->excludes);
-
-        foreach ($comparer->getOutdatedFiles() as $file)
-            $target->put($file, $source->get($file), $source->getFileMode($file));
-
-        foreach ($comparer->getMissingDirs() as $file)
-            $target->createDir($file, $source->getFileMode($file));
-
-        foreach ($comparer->getMissingFiles() as $file)
-            $target->put($file, $source->get($file), $source->getFileMode($file));
+        $this->updateOutdated($diff);
+        $this->addMissing($diff);
 
         if (!$preserve) {
-            foreach ($comparer->getObsoleteFiles() as $file)
-                $target->remove($file);
-
-            foreach ($comparer->getObsoleteDirs() as $file)
-                $target->removeDir($file);
+            $this->removeObsolete($diff);
         }
     }
 
@@ -67,5 +54,42 @@ class FilesSynchronizer extends AbstractSynchronizer
     public function supportsTarget(SynchronizerTargetInterface $target)
     {
         return $target instanceof FilesTargetInterface;
+    }
+
+    protected function updateOutdated(FilesComparer $diff)
+    {
+        $files = $diff->getOutdatedFiles();
+
+        foreach ($files as $file) {
+            $this->target->put($file, $this->source->get($file), $this->source->getFileMode($file));
+        }
+    }
+
+    protected function addMissing(FilesComparer $diff)
+    {
+        $files = $diff->getMissingFiles();
+        $directories = $diff->getMissingDirs();
+
+        foreach ($directories as $directory) {
+            $this->target->createDir($directory, $this->source->getFileMode($directory));
+        }
+
+        foreach ($files as $file) {
+            $this->target->put($file, $this->source->get($file), $this->source->getFileMode($file));
+        }
+    }
+
+    protected function removeObsolete(FilesComparer $diff)
+    {
+        $files = $diff->getObsoleteFiles();
+        $directories = $diff->getObsoleteDirs();
+
+        foreach ($files as $file) {
+            $this->target->remove($file);
+        }
+
+        foreach ($directories as $directory) {
+            $this->target->removeDir($directory);
+        }
     }
 }
