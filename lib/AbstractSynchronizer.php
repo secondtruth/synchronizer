@@ -32,14 +32,29 @@ use FlameCore\Observer\ObserverInterface;
  */
 abstract class AbstractSynchronizer implements SynchronizerInterface
 {
+    /**
+     * @var \FlameCore\Synchronizer\SynchronizerSourceInterface
+     */
     protected $source;
 
+    /**
+     * @var \FlameCore\Synchronizer\SynchronizerTargetInterface
+     */
     protected $target;
 
+    /**
+     * @var \FlameCore\Observer\ObserverInterface
+     */
     protected $observer;
 
+    /**
+     * @var array
+     */
     protected $excludes = array();
 
+    /**
+     * {@inheritdoc}
+     */
     public function __construct(SynchronizerSourceInterface $source, SynchronizerTargetInterface $target)
     {
         if (!$this->supportsSource($source)) {
@@ -54,21 +69,33 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
         $this->target = $target;
     }
 
+    /**
+     * @return array
+     */
     public function getExcludes()
     {
         return $this->excludes;
     }
 
+    /**
+     * @param array $excludes
+     */
     public function setExcludes(array $excludes)
     {
         $this->excludes = $excludes;
     }
 
+    /**
+     * @param string $exclude
+     */
     public function exclude($exclude)
     {
         $this->excludes[] = $exclude;
     }
 
+    /**
+     * @param \FlameCore\Observer\ObserverInterface $observer
+     */
     public function observe(ObserverInterface $observer)
     {
         $this->observer = $observer;

@@ -30,5 +30,8 @@ namespace FlameCore\Synchronizer;
  */
 interface SynchronizerTargetInterface
 {
+    /**
+     * @param array $settings
+     */
     public function __construct(array $settings);
 }

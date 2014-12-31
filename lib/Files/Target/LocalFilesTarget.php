@@ -30,11 +30,17 @@ namespace FlameCore\Synchronizer\Files\Target;
  */
 class LocalFilesTarget extends AbstractFilesTarget
 {
+    /**
+     * {@inheritdoc}
+     */
     public function get($file)
     {
         return file_get_contents($this->getRealPathName($file));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function put($file, $content, $mode)
     {
         $filename = $this->getRealPathName($file);
@@ -47,26 +53,41 @@ class LocalFilesTarget extends AbstractFilesTarget
         return false;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function chmod($file, $mode)
     {
         return chmod($this->getRealPathName($file), $mode);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function remove($file)
     {
         return unlink($this->getRealPathName($file));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function createDir($name, $mode = 0777)
     {
         return mkdir($this->getRealPathName($name), $mode, true);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function removeDir($name)
     {
         return rmdir($this->getRealPathName($name));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getFilesList($exclude = false)
     {
         $fileslist = array();
@@ -102,11 +123,17 @@ class LocalFilesTarget extends AbstractFilesTarget
         return $fileslist;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getRealPathName($file)
     {
         return realpath($this->path . DIRECTORY_SEPARATOR . $file);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getFileMode($file)
     {
         $fileperms = fileperms($this->getRealPathName($file));
@@ -114,11 +141,17 @@ class LocalFilesTarget extends AbstractFilesTarget
         return (int) substr(decoct($fileperms), 2);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getFileHash($file)
     {
         return hash_file('crc32b', $this->getRealPathName($file));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function discoverTarget(array $settings)
     {
         if (!isset($settings['dir']) || !is_string($settings['dir'])) {

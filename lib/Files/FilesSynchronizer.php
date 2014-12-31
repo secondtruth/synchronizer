@@ -34,6 +34,9 @@ use FlameCore\Synchronizer\SynchronizerTargetInterface;
  */
 class FilesSynchronizer extends AbstractSynchronizer
 {
+    /**
+     * {@inheritdoc}
+     */
     public function synchronize($preserve = true)
     {
         $diff = new FilesComparer($this->source, $this->target, $this->excludes);
@@ -46,16 +49,25 @@ class FilesSynchronizer extends AbstractSynchronizer
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function supportsSource(SynchronizerSourceInterface $source)
     {
         return $source instanceof FilesSourceInterface;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function supportsTarget(SynchronizerTargetInterface $target)
     {
         return $target instanceof FilesTargetInterface;
     }
 
+    /**
+     * @param \FlameCore\Synchronizer\Files\FilesComparer $diff
+     */
     protected function updateOutdated(FilesComparer $diff)
     {
         $files = $diff->getOutdatedFiles();
@@ -65,6 +77,9 @@ class FilesSynchronizer extends AbstractSynchronizer
         }
     }
 
+    /**
+     * @param \FlameCore\Synchronizer\Files\FilesComparer $diff
+     */
     protected function addMissing(FilesComparer $diff)
     {
         $files = $diff->getMissingFiles();
@@ -79,6 +94,9 @@ class FilesSynchronizer extends AbstractSynchronizer
         }
     }
 
+    /**
+     * @param \FlameCore\Synchronizer\Files\FilesComparer $diff
+     */
     protected function removeObsolete(FilesComparer $diff)
     {
         $files = $diff->getObsoleteFiles();

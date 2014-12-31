@@ -33,16 +33,36 @@ use FlameCore\Synchronizer\Files\Target\FilesTargetInterface;
  */
 class FilesComparer
 {
+    /**
+     * @var array
+     */
     protected $outdatedFiles = array();
 
+    /**
+     * @var array
+     */
     protected $missingDirs = array();
 
+    /**
+     * @var array
+     */
     protected $missingFiles = array();
 
+    /**
+     * @var array
+     */
     protected $obsoleteDirs = array();
 
+    /**
+     * @var array
+     */
     protected $obsoleteFiles = array();
 
+    /**
+     * @param \FlameCore\Synchronizer\Files\Source\FilesSourceInterface $source
+     * @param \FlameCore\Synchronizer\Files\Target\FilesTargetInterface $target
+     * @param array|bool $exclude
+     */
     public function __construct(FilesSourceInterface $source, FilesTargetInterface $target, $exclude = false)
     {
         $sourceFiles = $source->getFilesList($exclude);
@@ -77,26 +97,41 @@ class FilesComparer
         }
     }
 
+    /**
+     * @return array
+     */
     public function getOutdatedFiles()
     {
         return $this->outdatedFiles;
     }
 
+    /**
+     * @return array
+     */
     public function getMissingDirs()
     {
         return $this->missingDirs;
     }
 
+    /**
+     * @return array
+     */
     public function getMissingFiles()
     {
         return $this->missingFiles;
     }
 
+    /**
+     * @return array
+     */
     public function getObsoleteDirs()
     {
         return $this->obsoleteDirs;
     }
 
+    /**
+     * @return array
+     */
     public function getObsoleteFiles()
     {
         return $this->obsoleteFiles;

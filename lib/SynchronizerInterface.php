@@ -30,11 +30,26 @@ namespace FlameCore\Synchronizer;
  */
 interface SynchronizerInterface
 {
+    /**
+     * @param \FlameCore\Synchronizer\SynchronizerSourceInterface $source
+     * @param \FlameCore\Synchronizer\SynchronizerTargetInterface $target
+     */
     public function __construct(SynchronizerSourceInterface $source, SynchronizerTargetInterface $target);
 
+    /**
+     * @param bool $preserve
+     */
     public function synchronize($preserve = true);
 
+    /**
+     * @param \FlameCore\Synchronizer\SynchronizerSourceInterface $source
+     * @return bool
+     */
     public function supportsSource(SynchronizerSourceInterface $source);
 
+    /**
+     * @param \FlameCore\Synchronizer\SynchronizerTargetInterface $target
+     * @return bool
+     */
     public function supportsTarget(SynchronizerTargetInterface $target);
 }

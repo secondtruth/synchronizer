@@ -33,25 +33,72 @@ use FlameCore\Synchronizer\SynchronizerTargetInterface;
  */
 interface FilesTargetInterface extends SynchronizerTargetInterface
 {
+    /**
+     * @param string $file
+     * @return string
+     */
     public function get($file);
 
+    /**
+     * @param string $file
+     * @param string $content
+     * @param int $mode
+     * @return bool
+     */
     public function put($file, $content, $mode);
 
+    /**
+     * @param string $file
+     * @param int $mode
+     * @return bool
+     */
     public function chmod($file, $mode);
 
+    /**
+     * @param string $file
+     * @return bool
+     */
     public function remove($file);
 
+    /**
+     * @param string $name
+     * @param int $mode
+     * @return bool
+     */
     public function createDir($name, $mode = 0777);
 
+    /**
+     * @param string $name
+     * @return bool
+     */
     public function removeDir($name);
 
+    /**
+     * @return string
+     */
     public function getFilesPath();
 
+    /**
+     * @param array|bool $exclude
+     * @return array
+     */
     public function getFilesList($exclude = false);
 
+    /**
+     * @param string $file
+     * @return string
+     */
     public function getRealPathName($file);
 
+    /**
+     * @param string $file
+     * @return int
+     */
     public function getFileMode($file);
 
+    /**
+     * @param string $file
+     * @return string
+     */
     public function getFileHash($file);
 }

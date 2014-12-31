@@ -30,20 +30,37 @@ namespace FlameCore\Synchronizer\Files\Source;
  */
 abstract class AbstractFilesSource implements FilesSourceInterface
 {
+    /**
+     * @var string
+     */
     protected $path;
 
+    /**
+     * {@inheritdoc}
+     */
     public function __construct(array $settings)
     {
         $this->path = $this->discoverSource($settings);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getFilesPath()
     {
         return $this->path;
     }
 
+    /**
+     * @param array $settings
+     * @return string
+     */
     abstract protected function discoverSource(array $settings);
 
+    /**
+     * @param string $path
+     * @return bool
+     */
     protected function isAbsolutePath($path)
     {
         return $path[0] === DIRECTORY_SEPARATOR || preg_match('#^(?:/|\\\\|[A-Za-z]:\\\\|[A-Za-z]:/)#',$path);

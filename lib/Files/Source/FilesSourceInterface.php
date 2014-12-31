@@ -32,15 +32,38 @@ use FlameCore\Synchronizer\SynchronizerSourceInterface;
  */
 interface FilesSourceInterface extends SynchronizerSourceInterface
 {
+    /**
+     * @param string $file
+     * @return string
+     */
     public function get($file);
 
+    /**
+     * @return string
+     */
     public function getFilesPath();
 
+    /**
+     * @param array|bool $exclude
+     * @return array
+     */
     public function getFilesList($exclude = false);
 
+    /**
+     * @param string $file
+     * @return string
+     */
     public function getRealPathName($file);
 
+    /**
+     * @param string $file
+     * @return int
+     */
     public function getFileMode($file);
 
+    /**
+     * @param string $file
+     * @return string
+     */
     public function getFileHash($file);
 }

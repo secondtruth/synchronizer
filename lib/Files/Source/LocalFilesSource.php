@@ -33,11 +33,17 @@ use FlameCore\Observer\ObserverInterface;
  */
 class LocalFilesSource extends AbstractFilesSource
 {
+    /**
+     * {@inheritdoc}
+     */
     public function get($file)
     {
         return file_get_contents($this->getRealPathName($file));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getFilesList($exclude = false)
     {
         $fileslist = array();
@@ -73,11 +79,17 @@ class LocalFilesSource extends AbstractFilesSource
         return $fileslist;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getRealPathName($file)
     {
         return realpath($this->path . DIRECTORY_SEPARATOR . $file);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getFileMode($file)
     {
         $fileperms = fileperms($this->getRealPathName($file));
@@ -85,11 +97,17 @@ class LocalFilesSource extends AbstractFilesSource
         return (int) substr(decoct($fileperms), 2);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getFileHash($file)
     {
         return hash_file('crc32b', $this->getRealPathName($file));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function discoverSource(array $settings)
     {
         if (!isset($settings['dir']) || !is_string($settings['dir'])) {
