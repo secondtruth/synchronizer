@@ -37,20 +37,10 @@ abstract class AbstractFilesSource implements FilesSourceInterface
         $this->path = $this->discoverSource($settings);
     }
 
-    abstract public function get($file);
-
     public function getFilesPath()
     {
         return $this->path;
     }
-
-    abstract public function getFilesList($exclude = false);
-
-    abstract public function getRealPathName($file);
-
-    abstract public function getFileMode($file);
-
-    abstract public function getFileHash($file);
 
     abstract protected function discoverSource(array $settings);
 

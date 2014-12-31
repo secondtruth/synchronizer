@@ -33,11 +33,9 @@ use FlameCore\Observer\ObserverInterface;
  */
 class LocalFilesSource extends AbstractFilesSource
 {
-    protected $path;
-
     public function get($file)
     {
-        file_get_contents($this->getRealPathName($file));
+        return file_get_contents($this->getRealPathName($file));
     }
 
     public function getFilesList($exclude = false)
@@ -48,14 +46,16 @@ class LocalFilesSource extends AbstractFilesSource
 
         if ((is_string($exclude) || is_array($exclude)) && !empty($exclude)) {
             $iterator = new \RecursiveCallbackFilterIterator($iterator, function ($current, $key, $iterator) use ($exclude) {
-                if ($current->isDir())
+                if ($current->isDir()) {
                     return true;
+                }
 
                 $subpath = substr($current->getPathName(), strlen($this->path) + 1);
 
                 foreach ((array) $exclude as $pattern) {
-                    if ($pattern[0] == '!' ? !fnmatch(substr($pattern, 1), $subpath) : fnmatch($pattern, $subpath))
+                    if ($pattern[0] == '!' ? !fnmatch(substr($pattern, 1), $subpath) : fnmatch($pattern, $subpath)) {
                         return false;
+                    }
                 }
 
                 return true;
@@ -92,8 +92,9 @@ class LocalFilesSource extends AbstractFilesSource
 
     protected function discoverSource(array $settings)
     {
-        if (!isset($settings['dir']) || !is_string($settings['dir']))
+        if (!isset($settings['dir']) || !is_string($settings['dir'])) {
             throw new \InvalidArgumentException(sprintf('The %s does not define "dir" setting.', get_class($this)));
+        }
 
         return !$this->isAbsolutePath($settings['dir']) ? realpath(getcwd() . DIRECTORY_SEPARATOR . $settings['dir']) : $settings['dir'];
     }

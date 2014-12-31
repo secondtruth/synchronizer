@@ -32,15 +32,19 @@ class LocalFilesTarget extends AbstractFilesTarget
 {
     public function get($file)
     {
-        file_get_contents($this->getRealPathName($file));
+        return file_get_contents($this->getRealPathName($file));
     }
 
     public function put($file, $content, $mode)
     {
         $filename = $this->getRealPathName($file);
 
-        file_put_contents($filename, $content);
-        chmod($filename, $mode);
+        if (file_put_contents($filename, $content)) {
+            @chmod($filename, $mode);
+            return true;
+        }
+
+        return false;
     }
 
     public function chmod($file, $mode)
@@ -71,14 +75,16 @@ class LocalFilesTarget extends AbstractFilesTarget
 
         if ((is_string($exclude) || is_array($exclude)) && !empty($exclude)) {
             $iterator = new \RecursiveCallbackFilterIterator($iterator, function ($current, $key, $iterator) use ($exclude) {
-                if ($current->isDir())
+                if ($current->isDir()) {
                     return true;
+                }
 
                 $subpath = substr($current->getPathName(), strlen($this->path) + 1);
 
                 foreach ((array) $exclude as $pattern) {
-                    if ($pattern[0] == '!' ? !fnmatch(substr($pattern, 1), $subpath) : fnmatch($pattern, $subpath))
+                    if ($pattern[0] == '!' ? !fnmatch(substr($pattern, 1), $subpath) : fnmatch($pattern, $subpath)) {
                         return false;
+                    }
                 }
 
                 return true;
@@ -115,8 +121,9 @@ class LocalFilesTarget extends AbstractFilesTarget
 
     protected function discoverTarget(array $settings)
     {
-        if (!isset($settings['dir']) || !is_string($settings['dir']))
+        if (!isset($settings['dir']) || !is_string($settings['dir'])) {
             throw new \InvalidArgumentException(sprintf('The %s does not define "dir" setting.', get_class($this)));
+        }
 
         return !$this->isAbsolutePath($settings['dir']) ? realpath(getcwd() . DIRECTORY_SEPARATOR . $settings['dir']) : $settings['dir'];
     }

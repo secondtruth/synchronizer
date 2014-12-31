@@ -42,11 +42,13 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
 
     public function __construct(SynchronizerSourceInterface $source, SynchronizerTargetInterface $target)
     {
-        if (!$this->supportsSource($source))
+        if (!$this->supportsSource($source)) {
             throw new \InvalidArgumentException(sprintf('%s does not support %s.', get_class($this), get_class($source)));
+        }
 
-        if (!$this->supportsTarget($target))
+        if (!$this->supportsTarget($target)) {
             throw new \InvalidArgumentException(sprintf('%s does not support %s.', get_class($this), get_class($target)));
+        }
 
         $this->source = $source;
         $this->target = $target;

@@ -37,30 +37,10 @@ abstract class AbstractFilesTarget implements FilesTargetInterface
         $this->path = $this->discoverTarget($settings);
     }
 
-    abstract public function get($file);
-
-    abstract public function put($file, $content, $mode);
-
-    abstract public function chmod($file, $mode);
-
-    abstract public function remove($file);
-
-    abstract public function createDir($name, $mode = 0777);
-
-    abstract public function removeDir($name);
-
     public function getFilesPath()
     {
         return $this->path;
     }
-
-    abstract public function getFilesList($exclude = false);
-
-    abstract public function getRealPathName($file);
-
-    abstract public function getFileMode($file);
-
-    abstract public function getFileHash($file);
 
     abstract protected function discoverTarget(array $settings);
 

@@ -49,13 +49,15 @@ class FilesComparer
         $targetFiles = $target->getFilesList();
 
         foreach ($sourceFiles as $dir => $files) {
-            if (isset($targetFiles[$dir]))
+            if (isset($targetFiles[$dir])) {
                 $this->missingDirs[] = $dir;
+            }
 
             foreach ($files as $file => $pathname) {
                 if (isset($targetFiles[$dir][$file])) {
-                    if ($source->getFileHash($pathname) != $target->getFileHash($pathname))
+                    if ($source->getFileHash($pathname) != $target->getFileHash($pathname)) {
                         $this->outdatedFiles[] = $pathname;
+                    }
                 } else {
                     $this->missingFiles[] = $pathname;
                 }
@@ -64,12 +66,14 @@ class FilesComparer
 
         foreach ($targetFiles as $dir => $files) {
             foreach ($files as $file => $pathname) {
-                if (!isset($sourceFiles[$dir][$file]))
+                if (!isset($sourceFiles[$dir][$file])) {
                     $this->obsoleteFiles[] = $pathname;
+                }
             }
 
-            if (!isset($sourceFiles[$dir]))
+            if (!isset($sourceFiles[$dir])) {
                 $this->obsoleteDirs[] = $dir;
+            }
         }
     }
 
