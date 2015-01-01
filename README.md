@@ -1,17 +1,7 @@
 FlameCore Synchronizer
 ======================
 
-This library makes it easy to synchronize filesystems and database schemas.
-
-
-Planned Features
-----------------
-
-* Synchronize files locally and remotely
-
-* Synchronize database schemas
-
-* Beautiful and easy to use API
+This library makes it easy to synchronize all kinds of things. It features a beautiful and easy to use API.
 
 
 Requirements
