@@ -54,6 +54,7 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
 
     /**
      * @param \FlameCore\Synchronizer\SynchronizerSourceInterface $source
+     * @return \FlameCore\Synchronizer\SynchronizerInterface
      */
     public function setSource(SynchronizerSourceInterface $source)
     {
@@ -62,10 +63,13 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
         }
 
         $this->source = $source;
+
+        return $this;
     }
 
     /**
      * @param \FlameCore\Synchronizer\SynchronizerTargetInterface $target
+     * @return \FlameCore\Synchronizer\SynchronizerInterface
      */
     public function setTarget(SynchronizerTargetInterface $target)
     {
@@ -74,6 +78,8 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
         }
 
         $this->target = $target;
+
+        return $this;
     }
 
     /**
@@ -86,25 +92,34 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
 
     /**
      * @param array $excludes
+     * @return \FlameCore\Synchronizer\SynchronizerInterface
      */
     public function setExcludes(array $excludes)
     {
         $this->excludes = $excludes;
+
+        return $this;
     }
 
     /**
      * @param string $exclude
+     * @return \FlameCore\Synchronizer\SynchronizerInterface
      */
     public function exclude($exclude)
     {
         $this->excludes[] = $exclude;
+
+        return $this;
     }
 
     /**
      * @param \FlameCore\Observer\ObserverInterface $observer
+     * @return \FlameCore\Synchronizer\SynchronizerInterface
      */
     public function observe(ObserverInterface $observer)
     {
         $this->observer = $observer;
+
+        return $this;
     }
 }
