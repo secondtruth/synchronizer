@@ -53,19 +53,26 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
     protected $excludes = array();
 
     /**
-     * {@inheritdoc}
+     * @param \FlameCore\Synchronizer\SynchronizerSourceInterface $source
      */
-    public function __construct(SynchronizerSourceInterface $source, SynchronizerTargetInterface $target)
+    public function setSource(SynchronizerSourceInterface $source)
     {
         if (!$this->supportsSource($source)) {
             throw new \InvalidArgumentException(sprintf('%s does not support %s.', get_class($this), get_class($source)));
         }
 
+        $this->source = $source;
+    }
+
+    /**
+     * @param \FlameCore\Synchronizer\SynchronizerTargetInterface $target
+     */
+    public function setTarget(SynchronizerTargetInterface $target)
+    {
         if (!$this->supportsTarget($target)) {
             throw new \InvalidArgumentException(sprintf('%s does not support %s.', get_class($this), get_class($target)));
         }
 
-        $this->source = $source;
         $this->target = $target;
     }
 
