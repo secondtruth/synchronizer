@@ -83,7 +83,7 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getExcludes()
     {
