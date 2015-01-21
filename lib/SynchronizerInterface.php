@@ -34,6 +34,7 @@ interface SynchronizerInterface
 {
     /**
      * @param bool $preserve
+     * @return bool
      */
     public function synchronize($preserve = true);
 
