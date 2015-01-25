@@ -23,7 +23,7 @@
 
 namespace FlameCore\Synchronizer;
 
-use FlameCore\Observer\ObserverInterface;
+use FlameCore\EventObserver\ObserverInterface;
 
 /**
  * The AbstractSynchronizer class
@@ -43,7 +43,7 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
     protected $target;
 
     /**
-     * @var \FlameCore\Observer\ObserverInterface
+     * @var \FlameCore\EventObserver\ObserverInterface
      */
     protected $observer;
 
@@ -113,7 +113,7 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
     }
 
     /**
-     * @param \FlameCore\Observer\ObserverInterface $observer
+     * @param \FlameCore\EventObserver\ObserverInterface $observer
      * @return \FlameCore\Synchronizer\SynchronizerInterface
      */
     public function observe(ObserverInterface $observer)

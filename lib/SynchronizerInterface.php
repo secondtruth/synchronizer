@@ -23,7 +23,7 @@
 
 namespace FlameCore\Synchronizer;
 
-use FlameCore\Observer\ObserverInterface;
+use FlameCore\EventObserver\ObserverInterface;
 
 /**
  * The Synchronizer interface
@@ -76,7 +76,7 @@ interface SynchronizerInterface
     public function exclude($exclude);
 
     /**
-     * @param \FlameCore\Observer\ObserverInterface $observer
+     * @param \FlameCore\EventObserver\ObserverInterface $observer
      */
     public function observe(ObserverInterface $observer);
 }
