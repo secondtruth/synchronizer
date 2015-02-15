@@ -54,6 +54,16 @@ abstract class AbstractSynchronizer implements SynchronizerInterface
 
     /**
      * @param \FlameCore\Synchronizer\SynchronizerSourceInterface $source
+     * @param \FlameCore\Synchronizer\SynchronizerTargetInterface $target
+     */
+    public function __construct(SynchronizerSourceInterface $source, SynchronizerTargetInterface $target)
+    {
+        $this->setSource($source);
+        $this->setTarget($target);
+    }
+
+    /**
+     * @param \FlameCore\Synchronizer\SynchronizerSourceInterface $source
      * @return \FlameCore\Synchronizer\SynchronizerInterface
      */
     public function setSource(SynchronizerSourceInterface $source)
