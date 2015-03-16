@@ -48,4 +48,20 @@ interface SynchronizerFactoryInterface
      * @return \FlameCore\Synchronizer\SynchronizerTargetInterface
      */
     public function createTarget(array $settings);
+
+    /**
+     * @param string $type
+     * @param string $class
+     * @throws \DomainException
+     * @throws \LogicException
+     */
+    public function registerSource($type, $class);
+
+    /**
+     * @param string $type
+     * @param string $class
+     * @throws \DomainException
+     * @throws \LogicException
+     */
+    public function registerTarget($type, $class);
 }
