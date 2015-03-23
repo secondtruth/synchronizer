@@ -1,6 +1,6 @@
 {
     "name": "flamecore/synchronizer",
-    "description": "Synchronize filesystems and database schemas",
+    "description": "Synchronize all kinds of things",
     "homepage": "http://www.flamecore.org",
     "keywords": ["synchronization"],
     "license": "ISC",
@@ -14,7 +14,7 @@
     ],
     "support": {
         "issues": "https://github.com/FlameCore/Synchronizer/issues",
-        "source": "https://github.com/FlameCore/Synchronizer"
+        "wiki": "https://github.com/FlameCore/Synchronizer/wiki"
     },
     "require": {
         "php": ">=5.4",
