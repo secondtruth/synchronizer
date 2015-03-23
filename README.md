@@ -1,6 +1,8 @@
 FlameCore Synchronizer
 ======================
 
+[![Join the chat at https://gitter.im/FlameCore/Synchronizer](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/FlameCore/Synchronizer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Code Climate](http://img.shields.io/codeclimate/github/FlameCore/Synchronizer.svg)](https://codeclimate.com/github/FlameCore/Synchronizer)
 [![License](http://img.shields.io/packagist/l/flamecore/synchronizer.svg)](https://packagist.org/packages/flamecore/synchronizer)
 
