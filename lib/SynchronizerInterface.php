@@ -1,7 +1,7 @@
 <?php
 /**
  * Synchronizer Library
- * Copyright (C) 2014 IceFlame.net
+ * Copyright (C) 2015 IceFlame.net
  *
  * Permission to use, copy, modify, and/or distribute this software for
  * any purpose with or without fee is hereby granted, provided that the
@@ -16,7 +16,7 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *
  * @package  FlameCore\Synchronizer
- * @version  0.1-dev
+ * @version  0.1
  * @link     http://www.flamecore.org
  * @license  ISC License <http://opensource.org/licenses/ISC>
  */

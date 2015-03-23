@@ -1,6 +1,7 @@
 FlameCore Synchronizer
 ======================
 
+[![Latest Stable](http://img.shields.io/packagist/v/flamecore/synchronizer.svg)](https://packagist.org/packages/flamecore/synchronizer)
 [![Code Climate](http://img.shields.io/codeclimate/github/FlameCore/Synchronizer.svg)](https://codeclimate.com/github/FlameCore/Synchronizer)
 [![License](http://img.shields.io/packagist/l/flamecore/synchronizer.svg)](https://packagist.org/packages/flamecore/synchronizer)
 
