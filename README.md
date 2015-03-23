@@ -18,6 +18,46 @@ The Synchronizer library is just an abstract foundation. But concrete implementa
 * [DatabaseSynchronizer](https://github.com/FlameCore/DatabaseSynchronizer)
 
 
+Installation
+------------
+
+### Install via Composer
+
+Create a file called `composer.json` in your project directory and put the following into it:
+
+```
+{
+    "require": {
+        "flamecore/synchronizer": "0.1.*"
+    }
+}
+```
+
+[Install Composer](https://getcomposer.org/doc/00-intro.md#installation-nix) if you don't already have it present on your system:
+
+    curl -sS https://getcomposer.org/installer | php
+
+Use Composer to [download the vendor libraries](https://getcomposer.org/doc/00-intro.md#using-composer) and generate the vendor/autoload.php file:
+
+    php composer.phar install
+
+Include the vendor autoloader and use the classes:
+
+```php
+namespace Acme\MyApplication;
+
+// To create a Synchronizer:
+use FlameCore\Synchronizer\AbstractSynchronizer;
+use FlameCore\Synchronizer\SynchronizerSourceInterface;
+use FlameCore\Synchronizer\SynchronizerTargetInterface;
+
+// To make your project compatible with Synchronizer:
+use FlameCore\Synchronizer\SynchronizerInterface;
+
+require 'vendor/autoload.php';
+```
+
+
 Requirements
 ------------
 
@@ -26,6 +66,8 @@ Requirements
 
 Contributors
 ------------
+
+If you want to contribute, please see the [CONTRIBUTING](CONTRIBUTING.md) file first.
 
 Thanks to the contributors:
 
