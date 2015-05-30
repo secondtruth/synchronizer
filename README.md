@@ -2,7 +2,7 @@ FlameCore Synchronizer
 ======================
 
 [![Latest Stable](http://img.shields.io/packagist/v/flamecore/synchronizer.svg)](https://packagist.org/packages/flamecore/synchronizer)
-[![Code Climate](http://img.shields.io/codeclimate/github/FlameCore/Synchronizer.svg)](https://codeclimate.com/github/FlameCore/Synchronizer)
+[![Scrutinizer](http://img.shields.io/scrutinizer/g/FlameCore/Synchronizer.svg)](https://scrutinizer-ci.com/g/FlameCore/Synchronizer)
 [![License](http://img.shields.io/packagist/l/flamecore/synchronizer.svg)](https://packagist.org/packages/flamecore/synchronizer)
 
 This library makes it easy to synchronize all kinds of things. It features a beautiful and easy to use API.
@@ -36,11 +36,11 @@ Create a file called `composer.json` in your project directory and put the follo
 
 [Install Composer](https://getcomposer.org/doc/00-intro.md#installation-nix) if you don't already have it present on your system:
 
-    curl -sS https://getcomposer.org/installer | php
+    $ curl -sS https://getcomposer.org/installer | php
 
 Use Composer to [download the vendor libraries](https://getcomposer.org/doc/00-intro.md#using-composer) and generate the vendor/autoload.php file:
 
-    php composer.phar install
+    $ php composer.phar install
 
 Include the vendor autoloader and use the classes:
 
