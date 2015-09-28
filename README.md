@@ -19,28 +19,8 @@ The Synchronizer library is just an abstract foundation. But concrete implementa
 * [DatabaseSynchronizer](https://github.com/FlameCore/DatabaseSynchronizer)
 
 
-Installation
-------------
-
-### Install via Composer
-
-Create a file called `composer.json` in your project directory and put the following into it:
-
-```
-{
-    "require": {
-        "flamecore/synchronizer": "0.1.*"
-    }
-}
-```
-
-[Install Composer](https://getcomposer.org/doc/00-intro.md#installation-nix) if you don't already have it present on your system:
-
-    $ curl -sS https://getcomposer.org/installer | php
-
-Use Composer to [download the vendor libraries](https://getcomposer.org/doc/00-intro.md#using-composer) and generate the vendor/autoload.php file:
-
-    $ php composer.phar install
+Usage
+-----
 
 Include the vendor autoloader and use the classes:
 
@@ -57,6 +37,102 @@ use FlameCore\Synchronizer\SynchronizerInterface;
 
 require 'vendor/autoload.php';
 ```
+
+Create your Synchronizer:
+
+```php
+class ExampleSynchronizer extends AbstractSynchronizer
+{
+    /**
+     * @param bool $preserve Preserve obsolete objects
+     * @return bool Returns whether the synchronization succeeded.
+     */
+    public function synchronize($preserve = true)
+    {
+        // Do the sync magic
+
+        return true;
+    }
+
+    /**
+     * @param SynchronizerSourceInterface $source The source
+     * @return bool Returns whether the synchronizer supports the source.
+     */
+    public function supportsSource(SynchronizerSourceInterface $source)
+    {
+        return $source instanceof ExampleSource;
+    }
+
+    /**
+     * @param SynchronizerTargetInterface $target The target
+     * @return bool Returns whether the synchronizer supports the target.
+     */
+    public function supportsTarget(SynchronizerTargetInterface $target)
+    {
+        return $target instanceof ExampleTarget;
+    }
+}
+```
+
+Create your Source and Target:
+
+```php
+class ExampleSource implements SynchronizerSourceInterface
+{
+    /**
+     * @param array $settings The settings
+     */
+    public function __construct(array $settings)
+    {
+        // Save settings
+    }
+
+    // Your methods...
+}
+
+class ExampleTarget implements SynchronizerTargetInterface
+{
+    /**
+     * @param array $settings The settings
+     */
+    public function __construct(array $settings)
+    {
+        // Save settings
+    }
+
+    // Your methods...
+}
+```
+
+Make your project compatible with Synchronizer:
+
+```php
+class Application
+{
+    protected $synchronizer;
+
+    public function setSynchronizer(SynchronizerInterface $synchronizer)
+    {
+        $this->synchronizer = $synchronizer;
+    }
+
+    // ...
+}
+```
+
+
+Installation
+------------
+
+### Install via Composer
+
+[Install Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) if you don't already have it present on your system:
+
+    $ curl -sS https://getcomposer.org/installer | php
+
+To install the library, run the following command and you will get the latest version:
+
+    $ php composer.phar require flamecore/synchronizer
 
 
 Requirements
