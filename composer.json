@@ -2,7 +2,7 @@
     "name": "flamecore/synchronizer",
     "description": "Synchronize all kinds of things",
     "homepage": "http://www.flamecore.org",
-    "keywords": ["synchronization"],
+    "keywords": ["synchronization", "sync"],
     "license": "ISC",
     "authors": [
         {
@@ -13,8 +13,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/FlameCore/Synchronizer/issues",
-        "wiki": "https://github.com/FlameCore/Synchronizer/wiki"
+        "issues": "https://github.com/flamecore/synchronizer/issues",
+        "wiki": "https://github.com/flamecore/synchronizer/wiki"
     },
     "require": {
         "php": ">=5.4",
