@@ -2,7 +2,7 @@ FlameCore Synchronizer
 ======================
 
 [![Latest Stable](http://img.shields.io/packagist/v/flamecore/synchronizer.svg)](https://packagist.org/packages/flamecore/synchronizer)
-[![Scrutinizer](http://img.shields.io/scrutinizer/g/FlameCore/Synchronizer.svg)](https://scrutinizer-ci.com/g/FlameCore/Synchronizer)
+[![Scrutinizer](http://img.shields.io/scrutinizer/g/flamecore/synchronizer.svg)](https://scrutinizer-ci.com/g/flamecore/synchronizer)
 [![License](http://img.shields.io/packagist/l/flamecore/synchronizer.svg)](https://packagist.org/packages/flamecore/synchronizer)
 
 This library makes it easy to synchronize all kinds of things. It features a beautiful and easy to use API.
@@ -141,11 +141,7 @@ Requirements
 * You must have at least PHP version 5.4 installed on your system.
 
 
-Contributors
+Contributing
 ------------
 
-If you want to contribute, please see the [CONTRIBUTING](CONTRIBUTING.md) file first.
-
-Thanks to the contributors:
-
-* Christian Neff (secondtruth)
+If you'd like to contribute, please see the [CONTRIBUTING](CONTRIBUTING.md) file first.

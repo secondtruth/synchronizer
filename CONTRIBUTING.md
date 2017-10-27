@@ -26,7 +26,7 @@ The Rules
 Coding Standard
 ---------------
 
-We use the [PSR-2 coding style][4] but without the line length limit.
+We follow the [PSR-2 coding style][4].
 
 
   [1]: https://github.com/FlameCore/Synchronizer
