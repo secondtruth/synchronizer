@@ -3,7 +3,7 @@
     "description": "Synchronize all kinds of things",
     "homepage": "http://www.flamecore.org",
     "keywords": ["synchronization", "sync"],
-    "license": "ISC",
+    "license": "MIT",
     "authors": [
         {
             "name": "Christian Neff",

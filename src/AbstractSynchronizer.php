@@ -10,7 +10,7 @@
  * @package  FlameCore\Synchronizer
  * @version  0.1
  * @link     http://www.flamecore.org
- * @license  http://opensource.org/licenses/ISC ISC License
+ * @license  http://opensource.org/licenses/MIT The MIT License
  */
 
 namespace FlameCore\Synchronizer;
